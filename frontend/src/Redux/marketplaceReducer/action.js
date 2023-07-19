@@ -25,11 +25,7 @@ export const getDealFun = () => (dispatch) => {
 
     dispatch({ type: API_REQUEST })
 
-    return axios.get(`${baseUrl}/market`, {
-        headers: {
-            "Authorization": `bearer ${localStorage.getItem("token")}`,
-        }
-    }).then((res) => {
+    return axios.get(`${baseUrl}/data`,).then((res) => {
         dispatch({ type: API_GET_SUCCESS, payload: res.data })
     }).catch((err) => {
         dispatch({ type: API_FAILED })
