@@ -3,27 +3,24 @@ const { MarketModel } = require('../models/marketplace.model')
 const marketRouter = express.Router();
 
 marketRouter.get("/", async (req, res) => {
+
     try {
-        const { sort, order, search, color } = req.query;
+        const market = await MarketModel.find()
 
-        const filterObj = {};
+        res.status(200).send(market)
 
-        if (search) {
-            filterObj.title = { $regex: search, $options: 'i' };
-        }
+    } catch (err) {
+        res.status(400).send({ "err": err.message })
+    }
 
-        if (color) {
-            filterObj.color = color;
-        }
+})
 
-        let sortObj = {};
-        if (sort === 'price') {
-            sortObj.price = order === 'desc' ? -1 : 1;
-        } else if (sort === 'mileage') {
-            sortObj.mileage = order === 'desc' ? -1 : 1;
-        }
 
-        const market = await MarketModel.find(filterObj).sort(sortObj)
+marketRouter.get("/dealer", async (req, res) => {
+
+    try {
+        const market = await MarketModel.find({ dealerID: req.body.dealerID })
+
         res.status(200).send(market)
 
     } catch (err) {
@@ -66,6 +63,7 @@ marketRouter.delete("/delete/:dataID", async (req, res) => {
     const { dataID } = req.params;
     const data = await MarketModel.findOne({ _id: dataID })
     try {
+        console.logreq.body.dealerID , data.dealerID()
         if (req.body.dealerID !== data.dealerID) {
             res.status(200).send({ "msg": "You are not authorized to perform this action" })
         } else {
