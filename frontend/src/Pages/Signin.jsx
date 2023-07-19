@@ -5,11 +5,14 @@ import {
   FormLabel,
   Heading,
   Input,
+  Stack,
+  Text,
   useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SigninFun } from "../Redux/authReducer/action";
+import { Link } from "react-router-dom";
 
 const Signin = () => {
   const toast = useToast();
@@ -47,7 +50,7 @@ const Signin = () => {
         });
       }
 
-      localStorage.removeItem("signinMsg")
+      localStorage.removeItem("signinMsg");
     });
   };
   return (
@@ -91,6 +94,14 @@ const Signin = () => {
         <Button mt={4} colorScheme="teal" type="submit">
           Signin
         </Button>
+        <Stack pt={6}>
+          <Text align={"center"}>
+            Not Registered?{" "}
+            <Button variant={"link"} color={"blue.400"}>
+              <Link to="/signup">Signup</Link>
+            </Button>
+          </Text>
+        </Stack>
       </form>
     </Box>
   );

@@ -6,6 +6,7 @@ import Signin from "../Pages/Signin";
 import NotFound from "../Pages/NotFound";
 import AddDeal from "../Pages/AddDeal";
 import PrivateRoute from "./PrivateRoute";
+import SingleDeal from "../Pages/SingleDeal";
 
 const AllRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const AllRoutes = () => {
         <Route path="*" element={<NotFound />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/signin" element={<Signin />}></Route>
+        <Route path="/deal/:id" element={<SingleDeal />}></Route>
         <Route
           path="/adddeal"
           element={

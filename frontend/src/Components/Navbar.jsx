@@ -13,6 +13,7 @@ const Navbar = () => {
       position="fixed"
       bgColor={"white"}
       top={"0"}
+      zIndex={"10"}
     >
       <Box>
         <Link to="/">
