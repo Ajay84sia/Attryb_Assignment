@@ -1,7 +1,7 @@
 import axios from "axios"
 import { SIGNIN_FAILED, SIGNIN_REQUEST, SIGNIN_SUCCESS, SIGNUP_FAILED, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "./actionTypes"
 
-let baseUrl = "http://localhost:8080"
+let baseUrl = "https://smoggy-frog-robe.cyclic.app"
 
 
 

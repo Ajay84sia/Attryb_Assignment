@@ -2,7 +2,7 @@ import axios from "axios"
 import { API_API_DELETE_MY_SUCCESS, API_FAILED, API_GET_MY_SUCCESS, API_GET_SUCCESS, API_POST_SUCCESS, API_REQUEST } from "./actionTypes"
 
 
-let baseUrl = "http://localhost:8080"
+let baseUrl = "https://smoggy-frog-robe.cyclic.app"
 
 export const addDealFun = (formData) => (dispatch) => {
 
