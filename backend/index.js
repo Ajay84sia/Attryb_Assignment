@@ -3,6 +3,8 @@ const cors = require("cors")
 const { connection } = require('./db')
 const { dealerRouter } = require('./routes/dealer.route')
 const { auth } = require('./middleware/auth.middleware')
+const { marketRouter } = require('./routes/marketplace.route')
+const { oemRouter } = require('./routes/oem.route')
 require("dotenv").config()
 
 const app = express()
@@ -19,6 +21,8 @@ app.use("/dealers", dealerRouter)
 
 app.use(auth)
 
+app.use("/market", marketRouter)
+app.use("/oem", oemRouter)
 
 
 app.listen(process.env.port, async () => {

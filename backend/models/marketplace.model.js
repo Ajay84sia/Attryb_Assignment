@@ -13,7 +13,6 @@ const marketSchema = mongoose.Schema({
     accidents: { type: Number, required: true },
     prevBuyers: { type: Number, required: true },
     registrationPlace: { type: String, required: true },
-    description : { type: String, required: true},
     dealerID: { type: String, required: true}
 }, {
     versionKey: false

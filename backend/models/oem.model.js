@@ -7,14 +7,12 @@ const oemSchema = mongoose.Schema({
     model: { type: String, required: true },
     imageURL: { type: String, required: true },
     year: { type: Number, required: true },
-    price: { type: Number, required: true },
+    originalPrice: { type: Number, required: true },
     mileage: { type: Number, required: true },
-    color: { type: String, required: true },
-    accidents: { type: Number, required: true },
-    prevBuyers: { type: Number, required: true },
-    registrationPlace: { type: String, required: true },
-    description : { type: String, required: true},
-    dealerID: { type: String, required: true}
+    power: { type: Number, required: true },
+    maxSpeed: { type: Number, required: true },
+    availableColors: { type: Array, required: true },
+    description: { type: String, required: true },
 }, {
     versionKey: false
 });
@@ -23,6 +21,6 @@ const oemSchema = mongoose.Schema({
 const OemModel = mongoose.model('oem', oemSchema);
 
 // Export the Oem model
-module.exports = { 
-    OemModel 
+module.exports = {
+    OemModel
 };
