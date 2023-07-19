@@ -67,7 +67,7 @@ const AddDeal = () => {
     });
   };
   return (
-    <Box style={{ width: "100%", paddingBottom: "10px" }}>
+    <Box style={{ width: "100%", paddingBottom: "10px", paddingTop:"80px" }}>
       <form
         onSubmit={handleFormSubmit}
         style={{

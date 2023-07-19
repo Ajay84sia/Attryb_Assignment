@@ -1,9 +1,44 @@
-import React from 'react'
+import { Box, Button, Flex, Heading } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import React from "react";
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
-  )
-}
+    <Flex
+      justifyContent={"space-between"}
+      width={"100%"}
+      py={4}
+      px={4}
+      boxShadow="xl"
+      position="fixed"
+      bgColor={"white"}
+      top={"0"}
+    >
+      <Box>
+        <Link to="/">
+          <Heading>BUYC</Heading>
+        </Link>
+      </Box>
+      <Flex justifyContent={"space-around"} width={"50%"} spacing={10}>
+        <Link to="/signup">
+          <Button colorScheme="teal" size="md">
+            Sign Up
+          </Button>
+        </Link>
+        <Link to="/signin">
+          <Button colorScheme="teal" size="md">
+            Sign In
+          </Button>
+        </Link>
 
-export default Navbar
+        <Link to="/addDeal">
+          <Button colorScheme="teal" size="md">
+            AddDeal
+          </Button>
+        </Link>
+      </Flex>
+    </Flex>
+  );
+};
+
+export default Navbar;
