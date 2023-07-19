@@ -1,5 +1,5 @@
 import axios from "axios"
-import { API_FAILED, API_GET_SUCCESS, API_POST_SUCCESS, API_REQUEST } from "./actionTypes"
+import { API_API_DELETE_MY_SUCCESS, API_FAILED, API_GET_MY_SUCCESS, API_GET_SUCCESS, API_POST_SUCCESS, API_REQUEST } from "./actionTypes"
 
 
 let baseUrl = "http://localhost:8080"
@@ -25,12 +25,44 @@ export const getDealFun = () => (dispatch) => {
 
     dispatch({ type: API_REQUEST })
 
-    return axios.get(`${baseUrl}/market/`, {
+    return axios.get(`${baseUrl}/market`, {
         headers: {
             "Authorization": `bearer ${localStorage.getItem("token")}`,
         }
     }).then((res) => {
         dispatch({ type: API_GET_SUCCESS, payload: res.data })
+    }).catch((err) => {
+        dispatch({ type: API_FAILED })
+    })
+
+}
+
+export const getMyDealFun = () => (dispatch) => {
+
+    dispatch({ type: API_REQUEST })
+
+    return axios.get(`${baseUrl}/market/dealer`, {
+        headers: {
+            "Authorization": `bearer ${localStorage.getItem("token")}`,
+        }
+    }).then((res) => {
+        dispatch({ type: API_GET_MY_SUCCESS, payload: res.data })
+    }).catch((err) => {
+        dispatch({ type: API_FAILED })
+    })
+
+}
+
+export const deleteMyDealFun = (id) => (dispatch) => {
+
+    dispatch({ type: API_REQUEST })
+
+    return axios.delete(`${baseUrl}/market/delete/:${id}`, {
+        headers: {
+            "Authorization": `bearer ${localStorage.getItem("token")}`,
+        }
+    }).then((res) => {
+        dispatch({ type: API_API_DELETE_MY_SUCCESS })
     }).catch((err) => {
         dispatch({ type: API_FAILED })
     })

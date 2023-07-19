@@ -32,9 +32,9 @@ const Navbar = () => {
           </Button>
         </Link>
 
-        <Link to="/addDeal">
+        <Link to="/dealer">
           <Button colorScheme="teal" size="md">
-            AddDeal
+            Dealer Section
           </Button>
         </Link>
       </Flex>

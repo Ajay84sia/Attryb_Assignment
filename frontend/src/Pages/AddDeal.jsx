@@ -11,6 +11,7 @@ import {
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addDealFun } from "../Redux/marketplaceReducer/action";
+import { Link } from "react-router-dom";
 
 const initialState = {
   title: "",
@@ -213,6 +214,13 @@ const AddDeal = () => {
           </Box>
         </HStack>
       </form>
+
+        <br />
+      <Link to="/dealer">
+          <Button colorScheme="teal" size="md">
+            Go Back
+          </Button>
+        </Link>
     </Box>
   );
 };

@@ -8,7 +8,7 @@ import {
   Select,
   Text,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDealFun } from "../Redux/marketplaceReducer/action";
 import { Link } from "react-router-dom";
@@ -16,8 +16,11 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const dispatch = useDispatch();
   const { marketData } = useSelector((store) => store.marketplaceReducer);
+  const [sort, setSort] = useState("");
+  const [order, setOrder] = useState("");
+  const [color, setColor] = useState("");
+  const [search, setSearch] = useState("");
 
-  console.log(marketData);
 
   useEffect(() => {
     dispatch(getDealFun());
@@ -26,20 +29,35 @@ const Home = () => {
   return (
     <Box style={{ width: "100%" }}>
       <HStack p={"120px"}>
-        <Select placeholder="Select Sortby">
+        <Select
+          placeholder="Select Sortby"
+          onChange={(e) => setSort(e.target.value)}
+        >
           <option value="price">Price</option>
           <option value="mileage">Mileage</option>
         </Select>
-        <Select placeholder="Select order">
+        <Select
+          placeholder="Select order"
+          onChange={(e) => setOrder(e.target.value)}
+        >
           <option value="asc">Low to High</option>
           <option value="desc">High to Low</option>
         </Select>
-        <Select placeholder="Select color">
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
+        <Select
+          placeholder="Select color"
+          onChange={(e) => setColor(e.target.value)}
+        >
+          <option value="red">Red</option>
+          <option value="silver">Silver</option>
+          <option value="blue">Blue</option>
+          <option value="white">White</option>
+          <option value="yellow">Yellow</option>
         </Select>
-        <Input type="text" />
+        <Input
+          type="text"
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search Car"
+        />
       </HStack>
 
       <Box

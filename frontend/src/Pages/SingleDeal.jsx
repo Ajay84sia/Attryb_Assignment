@@ -97,6 +97,15 @@ const SingleDeal = () => {
               fontWeight={600}
               fontSize={"2xl"}
               textAlign="center"
+              textTransform={"capitalize"}
+            >
+              Color : {data?.color}
+            </Text>
+            <Text
+              color={color2}
+              fontWeight={600}
+              fontSize={"2xl"}
+              textAlign="center"
             >
               Price : ₹ {data?.price} /-
             </Text>

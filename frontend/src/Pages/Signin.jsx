@@ -12,10 +12,11 @@ import {
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SigninFun } from "../Redux/authReducer/action";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Signin = () => {
   const toast = useToast();
+  const {isAuth} = useSelector((store)=>store.authReducer)
   const dispatch = useDispatch();
   const [form, setForm] = useState({
     email: "",
@@ -53,6 +54,10 @@ const Signin = () => {
       localStorage.removeItem("signinMsg");
     });
   };
+
+  if(isAuth){
+    return <Navigate to="/dealer"/>
+  }
   return (
     <Box style={{ width: "100%" }}>
       <form
