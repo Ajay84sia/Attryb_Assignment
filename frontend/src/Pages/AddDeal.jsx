@@ -6,23 +6,30 @@ import {
   HStack,
   Heading,
   Input,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addDealFun } from "../Redux/marketplaceReducer/action";
+
+const initialState = {
+  title: "",
+  manufacturer: "",
+  model: "",
+  imageURL: "",
+  year: "",
+  price: "",
+  mileage: "",
+  color: "",
+  accidents: "",
+  prevBuyers: "",
+  registrationPlace: "",
+};
 
 const AddDeal = () => {
-  const [dealForm, setDealForm] = useState({
-    title: "",
-    manufacturer: "",
-    model: "",
-    imageURL: "",
-    year: "",
-    price: "",
-    mileage: "",
-    color: "",
-    accidents: "",
-    prevBuyers: "",
-    registrationPlace: "",
-  });
+  const toast = useToast();
+  const dispatch = useDispatch();
+  const [dealForm, setDealForm] = useState(initialState);
 
   const handleFormChange = (e) => {
     if (e.target.type === "number") {
@@ -38,10 +45,29 @@ const AddDeal = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(dealForm);
+    dispatch(addDealFun(dealForm)).then(() => {
+      let msg = localStorage.getItem("marketmsg");
+      if (msg == "New Data has been added") {
+        toast({
+          title: "New Data has been added.",
+          description: "",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "Something Went Wrong.",
+          description: "",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+    });
   };
   return (
-    <Box style={{ width: "100%", paddingBottom: "50px" }}>
+    <Box style={{ width: "100%", paddingBottom: "10px" }}>
       <form
         onSubmit={handleFormSubmit}
         style={{
@@ -49,7 +75,7 @@ const AddDeal = () => {
           margin: "auto",
           padding: "40px",
           boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-          marginTop: "100px",
+          marginTop: "50px",
           borderRadius: "20px",
           color: "teal",
         }}

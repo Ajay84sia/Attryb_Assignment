@@ -1,7 +1,18 @@
 import { Box, HStack, Input, Select } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getDealFun } from "../Redux/marketplaceReducer/action";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const { marketData } = useSelector((store) => store.marketplaceReducer);
+
+  console.log(marketData);
+
+  useEffect(() => {
+    dispatch(getDealFun());
+  }, []);
+
   return (
     <Box>
       <HStack>
