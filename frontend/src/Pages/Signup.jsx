@@ -5,15 +5,21 @@ import {
   FormLabel,
   Heading,
   Input,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { SignupFun } from "../Redux/authReducer/action";
 
 const Signup = () => {
+  const toast = useToast();
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
-    name:"",
+    name: "",
     email: "",
     password: "",
   });
+
   const handleSignup = (e) => {
     setForm((prev) => {
       return { ...form, [e.target.name]: e.target.value };
@@ -22,7 +28,30 @@ const Signup = () => {
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
-    console.log(form);
+    // console.log(form);
+    dispatch(SignupFun(form)).then(() => {
+      const message = localStorage.getItem("signupMsg");
+
+      if (message == "New dealer has been registered") {
+        toast({
+          title: "Account created.",
+          description: "We've created your account for you.",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "Error creating account",
+          description: "Something Went Wrong.",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+
+      localStorage.removeItem("signupMsg")
+    });
   };
   return (
     <Box style={{ width: "100%" }}>
@@ -74,7 +103,7 @@ const Signup = () => {
         </FormControl>
         <br />
         <Button mt={4} colorScheme="teal" type="submit">
-        Signup
+          Signup
         </Button>
       </form>
     </Box>

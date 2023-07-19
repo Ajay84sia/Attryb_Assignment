@@ -5,10 +5,15 @@ import {
   FormLabel,
   Heading,
   Input,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { SigninFun } from "../Redux/authReducer/action";
 
 const Signin = () => {
+  const toast = useToast();
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -21,7 +26,29 @@ const Signin = () => {
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
-    console.log(form);
+    // console.log(form);
+    dispatch(SigninFun(form)).then((res) => {
+      const message = localStorage.getItem("signinMsg");
+      if (message == "Login Succesfull") {
+        toast({
+          title: "Login Succesfull.",
+          description: "",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "Error while login",
+          description: "Something Went Wrong.",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+
+      localStorage.removeItem("signinMsg")
+    });
   };
   return (
     <Box style={{ width: "100%" }}>
