@@ -53,11 +53,14 @@ export const getMyDealFun = () => (dispatch) => {
 
 }
 
+
 export const deleteMyDealFun = (id) => (dispatch) => {
+
+    console.log(id)
 
     dispatch({ type: API_REQUEST })
 
-    return axios.delete(`${baseUrl}/market/delete/:${id}`, {
+    return axios.delete(`${baseUrl}/market/delete/${id}`, {
         headers: {
             "Authorization": `bearer ${localStorage.getItem("token")}`,
         }
