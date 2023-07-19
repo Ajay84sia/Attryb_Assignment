@@ -4,7 +4,7 @@ const marketRouter = express.Router();
 
 marketRouter.get("/", async (req, res) => {
     try {
-        const { price, sort, order, search, color, mileage } = req.query;
+        const { sort, order, search, color } = req.query;
 
         const filterObj = {};
 
@@ -14,14 +14,6 @@ marketRouter.get("/", async (req, res) => {
 
         if (color) {
             filterObj.color = color;
-        }
-
-        if (price) {
-            filterObj.price = { $lte: parseInt(price) };
-        }
-
-        if (mileage) {
-            filterObj.mileage = { $lte: parseInt(mileage) };
         }
 
 
@@ -34,6 +26,7 @@ marketRouter.get("/", async (req, res) => {
 
         const market = await MarketModel.find(filterObj).sort(sortObj)
         res.status(200).send(market)
+
     } catch (err) {
         res.status(400).send({ "err": err.message })
     }
