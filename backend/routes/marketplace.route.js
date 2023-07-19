@@ -16,7 +16,6 @@ marketRouter.get("/", async (req, res) => {
             filterObj.color = color;
         }
 
-
         let sortObj = {};
         if (sort === 'price') {
             sortObj.price = order === 'desc' ? -1 : 1;
