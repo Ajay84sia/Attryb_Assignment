@@ -35,7 +35,7 @@ dealerRouter.post("/login", async (req, res) => {
                 // result == true
                 if (result) {
                     const token = jwt.sign({ dealerID: dealer._id }, "attryb");
-                    res.status(200).send({ "msg": "Login Succesfull", token })
+                    res.status(200).send({ "msg": "Login Succesfull", token , name:dealer.name})
                 } else {
                     res.status(200).send({ "msg": "Wrong Credentials!!!" })
                 }

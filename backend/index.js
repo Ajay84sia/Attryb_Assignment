@@ -19,9 +19,11 @@ app.get("/", (req, res) => {
 
 app.use("/dealers", dealerRouter)
 
+
 app.use(auth)
 
 app.use("/market", marketRouter)
+
 app.use("/oem", oemRouter)
 
 
