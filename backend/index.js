@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require("cors")
 const { connection } = require('./db')
+const { dealerRouter } = require('./routes/dealer.route')
+const { auth } = require('./middleware/auth.middleware')
 require("dotenv").config()
 
 const app = express()
@@ -13,6 +15,9 @@ app.get("/", (req, res) => {
     res.status(200).send("Basic API Endpoint")
 })
 
+app.use("/dealers", dealerRouter)
+
+app.use(auth)
 
 
 
