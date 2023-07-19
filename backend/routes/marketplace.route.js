@@ -2,18 +2,18 @@ const express = require('express');
 const { MarketModel } = require('../models/marketplace.model')
 const marketRouter = express.Router();
 
-marketRouter.get("/", async (req, res) => {
+// marketRouter.get("/", async (req, res) => {
 
-    try {
-        const market = await MarketModel.find()
+//     try {
+//         const market = await MarketModel.find()
 
-        res.status(200).send(market)
+//         res.status(200).send(market)
 
-    } catch (err) {
-        res.status(400).send({ "err": err.message })
-    }
+//     } catch (err) {
+//         res.status(400).send({ "err": err.message })
+//     }
 
-})
+// })
 
 
 marketRouter.get("/dealer", async (req, res) => {

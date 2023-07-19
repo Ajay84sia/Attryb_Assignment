@@ -5,6 +5,7 @@ const { dealerRouter } = require('./routes/dealer.route')
 const { auth } = require('./middleware/auth.middleware')
 const { marketRouter } = require('./routes/marketplace.route')
 const { oemRouter } = require('./routes/oem.route')
+const { MarketModel } = require('./models/marketplace.model')
 require("dotenv").config()
 
 const app = express()
@@ -15,6 +16,16 @@ app.use(express.json())
 
 app.get("/", (req, res) => {
     res.status(200).send("Basic API Endpoint")
+})
+
+app.get("/data", async (req, res) => {
+    try {
+        const market = await MarketModel.find()
+        res.status(200).send(market)
+
+    } catch (err) {
+        res.status(400).send({ "err": err.message })
+    }
 })
 
 app.use("/dealers", dealerRouter)
