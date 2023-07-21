@@ -52,11 +52,26 @@ export const getMyDealFun = () => (dispatch) => {
 
 export const deleteMyDealFun = (id) => (dispatch) => {
 
-    console.log(id)
 
     dispatch({ type: API_REQUEST })
 
     return axios.delete(`${baseUrl}/market/delete/${id}`, {
+        headers: {
+            "Authorization": `bearer ${localStorage.getItem("token")}`,
+        }
+    }).then((res) => {
+        dispatch({ type: API_API_DELETE_MY_SUCCESS })
+    }).catch((err) => {
+        dispatch({ type: API_FAILED })
+    })
+
+}
+
+export const editMyDealFun = (id, newData) => (dispatch) => {
+
+    dispatch({ type: API_REQUEST })
+
+    return axios.delete(`${baseUrl}/market/delete/${id}`, newData, {
         headers: {
             "Authorization": `bearer ${localStorage.getItem("token")}`,
         }

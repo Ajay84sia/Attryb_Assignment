@@ -62,9 +62,9 @@ marketRouter.patch("/update/:dataID", async (req, res) => {
 marketRouter.delete("/delete/:dataID", async (req, res) => {
     const { dataID } = req.params;
     const data = await MarketModel.findOne({ _id: dataID })
+    // console.log(data)
     try {
-        console.logreq.body.dealerID , data.dealerID()
-        if (req.body.dealerID !== data.dealerID) {
+        if (req.body.dealerID != data.dealerID) {
             res.status(200).send({ "msg": "You are not authorized to perform this action" })
         } else {
             await MarketModel.findByIdAndDelete({ _id: dataID })

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteMyDealFun,
+  editMyDealFun,
   getMyDealFun,
 } from "../Redux/marketplaceReducer/action";
 import {
@@ -27,7 +28,9 @@ const GetDeal = () => {
 
   const { myData } = useSelector((store) => store.marketplaceReducer);
 
-  const handleEdit = () => {};
+  const handleEdit = (id) => {
+    dispatch(editMyDealFun(id,newData))
+  };
 
   const handleDelete = (id) => {
     dispatch(deleteMyDealFun(id)).then(() => {
