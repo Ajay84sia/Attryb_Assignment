@@ -1,5 +1,5 @@
 import axios from "axios"
-import { SIGNIN_FAILED, SIGNIN_REQUEST, SIGNIN_SUCCESS, SIGNUP_FAILED, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "./actionTypes"
+import { SIGNIN_FAILED, SIGNIN_REQUEST, SIGNIN_SUCCESS, SIGNOUT_REQUEST, SIGNOUT_SUCCESS, SIGNUP_FAILED, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "./actionTypes"
 
 let baseUrl = "https://smoggy-frog-robe.cyclic.app"
 
@@ -30,4 +30,15 @@ export const SigninFun = (formData) => (dispatch) => {
     }).catch((err) => {
         dispatch({ type: SIGNIN_FAILED })
     })
+}
+
+export const SignoutFun = () => (dispatch) => {
+
+    dispatch({ type: SIGNOUT_REQUEST })
+
+    dispatch({ type: SIGNOUT_SUCCESS })
+    localStorage.removeItem("signinMsg")
+    localStorage.removeItem("token")
+    localStorage.removeItem("dealerName")
+
 }

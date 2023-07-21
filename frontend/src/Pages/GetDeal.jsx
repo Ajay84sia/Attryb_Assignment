@@ -29,7 +29,7 @@ const GetDeal = () => {
   const { myData } = useSelector((store) => store.marketplaceReducer);
 
   const handleEdit = (id) => {
-    dispatch(editMyDealFun(id,newData))
+    // dispatch(editMyDealFun(id,newData))
   };
 
   const handleDelete = (id) => {
