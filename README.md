@@ -41,17 +41,21 @@ This Application lets you register and Login and post, list, update, and delete 
 
 # 🏷️ Deal listing Page
 
-![image](https://github.com/Ajay84sia/Attryb_Assignment/assets/98752820/0a596859-f21d-459b-bb4b-00ed3fb4f7a5)
+![image](https://github.com/Ajay84sia/Attryb_Assignment/assets/98752820/2f44d2b8-9d0a-49c9-9749-b86430ef2205)
+
 
 # 🏷️ Add New Deal Page
 
-![image](https://github.com/Ajay84sia/Attryb_Assignment/assets/98752820/60846828-574c-4d99-8909-ed3892d9c78f)
+![image](https://github.com/Ajay84sia/Attryb_Assignment/assets/98752820/e00fbe05-1a47-4980-804f-04ab239f11d9)
+
 
 # 🏷️ Edit Deals Page
 
-![image](https://github.com/Ajay84sia/Attryb_Assignment/assets/98752820/96246aa3-8734-405e-97fa-d01e55450c49)
+![image](https://github.com/Ajay84sia/Attryb_Assignment/assets/98752820/4e106923-7d26-4f16-ae5e-716fc9f72ed8)
+
 
 # 🏷️ OEMs Details Page
 
-![image](https://github.com/Ajay84sia/Attryb_Assignment/assets/98752820/7341e083-1cf3-44e3-9bba-5d223e0df0d7)
+![image](https://github.com/Ajay84sia/Attryb_Assignment/assets/98752820/f108bdf0-d561-4733-a88d-d4e6bc390944)
+
 
