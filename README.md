@@ -10,7 +10,7 @@ This Application lets you register and Login and post, list, update, and delete 
 
 ## **Frontend Deployed URL** 👉 (https://buyc-attryb.netlify.app)
 
-# 🏷️ Image Preview
+#  Image Preview
 
 # 🏷️ Home Page
 
