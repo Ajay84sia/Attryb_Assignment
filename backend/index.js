@@ -27,6 +27,59 @@ app.get("/data", async (req, res) => {
         res.status(400).send({ "err": err.message })
     }
 })
+app.get("/price", async (req, res) => {
+    const order = req.query.price
+    try {
+        if (order == "asc") {
+            const market = await MarketModel.find().sort({ "price": 1 })
+            res.status(200).send(market)
+        } else {
+            const market = await MarketModel.find().sort({ "price": -1 })
+            res.status(200).send(market)
+
+        }
+
+    } catch (err) {
+        res.status(400).send({ "err": err.message })
+    }
+})
+app.get("/mileage", async (req, res) => {
+    const order = req.query.mileage
+    try {
+        if (order == "asc") {
+            const market = await MarketModel.find().sort({ "mileage": 1 })
+            res.status(200).send(market)
+        } else {
+            const market = await MarketModel.find().sort({ "mileage": -1 })
+            res.status(200).send(market)
+
+        }
+
+
+    } catch (err) {
+        res.status(400).send({ "err": err.message })
+    }
+})
+app.get("/color", async (req, res) => {
+    const query = req.query.color
+    try {
+        const market = await MarketModel.find({ "color": query })
+        res.status(200).send(market)
+
+    } catch (err) {
+        res.status(400).send({ "err": err.message })
+    }
+})
+app.get("/search", async (req, res) => {
+    const query = req.query.search
+    try {
+        const market = await MarketModel.find({ "title": { "$regex": query, "$options": "i" } })
+        res.status(200).send(market)
+    } catch (err) {
+        res.status(400).send({ "err": err.message })
+    }
+})
+
 
 app.use("/dealers", dealerRouter)
 
