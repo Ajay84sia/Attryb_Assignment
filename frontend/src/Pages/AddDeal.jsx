@@ -216,7 +216,7 @@ const AddDeal = () => {
       </form>
 
         <br />
-      <Link to="/dealer">
+      <Link to="/getdeal">
           <Button colorScheme="teal" size="md">
             Go Back
           </Button>

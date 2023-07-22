@@ -15,12 +15,13 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { marketData } = useSelector((store) => store.marketplaceReducer);
+  const { marketData, isLoading, isError } = useSelector(
+    (store) => store.marketplaceReducer
+  );
   const [sort, setSort] = useState("");
   const [order, setOrder] = useState("");
   const [color, setColor] = useState("");
   const [search, setSearch] = useState("");
-
 
   useEffect(() => {
     dispatch(getDealFun());
@@ -60,56 +61,77 @@ const Home = () => {
         />
       </HStack>
 
-      <Box
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "30px",
-          width: "90%",
-          margin: "auto",
-          paddingBottom: "50px",
-        }}
-      >
-        {" "}
-        {marketData &&
-          marketData.map((el) => {
-            return (
-              <Box
-                key={el._id}
-                style={{
-                  textAlign: "left",
-                  borderRadius: "10px",
-                  boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-                  paddingBottom: "10px",
-                }}
-              >
-                <Image
-                  src={el.imageURL}
-                  alt={el.title}
-                  width={"100%"}
-                  height={"250px"}
-                  borderTopLeftRadius="10px"
-                  borderTopRightRadius="10px"
-                  marginBottom={"10px"}
-                />
-                <Text marginLeft={"20px"} style={{ fontWeight: "bold" }}>
-                  Title : {el.title}
-                </Text>
-                <Text marginLeft={"20px"}>Model : {el.model}</Text>
-                <Text marginLeft={"20px"}>
-                  Manufacturer : {el.manufacturer}
-                </Text>
-                <Text marginLeft={"20px"}>Year : {el.year}</Text>
-                <Text marginLeft={"20px"}>Mileage : {el.mileage} Km/L</Text>
-                <Text marginLeft={"20px"}>Price : ₹ {el.price} /-</Text>
-                <Button marginLeft={"150px"} marginTop={"10px"}>
-                  {" "}
-                  <Link to={`/deal/${el?._id}`}>More Details</Link>
-                </Button>
-              </Box>
-            );
-          })}
-      </Box>
+      {isLoading === true ? (
+        <>
+          <Image
+            src="https://i.stack.imgur.com/hzk6C.gif"
+            alt="loading"
+            margin="auto"
+            paddingTop="90px"
+            marginBottom="360px"
+          />
+        </>
+      ) : isError === true ? (
+        <>
+          <Image
+            src="https://cdn.dribbble.com/users/774806/screenshots/3823110/something-went-wrong.gif"
+            alt="error"
+            margin="auto"
+            width="45%"
+          />
+        </>
+      ) : (
+        <Box
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "30px",
+            width: "90%",
+            margin: "auto",
+            paddingBottom: "50px",
+          }}
+        >
+          {" "}
+          {marketData &&
+            marketData.map((el) => {
+              return (
+                <Box
+                  key={el._id}
+                  style={{
+                    textAlign: "left",
+                    borderRadius: "10px",
+                    boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                    paddingBottom: "10px",
+                  }}
+                >
+                  <Image
+                    src={el.imageURL}
+                    alt={el.title}
+                    width={"100%"}
+                    height={"250px"}
+                    borderTopLeftRadius="10px"
+                    borderTopRightRadius="10px"
+                    marginBottom={"10px"}
+                  />
+                  <Text marginLeft={"20px"} style={{ fontWeight: "bold" }}>
+                    Title : {el.title}
+                  </Text>
+                  <Text marginLeft={"20px"}>Model : {el.model}</Text>
+                  <Text marginLeft={"20px"}>
+                    Manufacturer : {el.manufacturer}
+                  </Text>
+                  <Text marginLeft={"20px"}>Year : {el.year}</Text>
+                  <Text marginLeft={"20px"}>Mileage : {el.mileage} Km/L</Text>
+                  <Text marginLeft={"20px"}>Price : ₹ {el.price} /-</Text>
+                  <Button marginLeft={"150px"} marginTop={"10px"}>
+                    {" "}
+                    <Link to={`/deal/${el?._id}`}>More Details</Link>
+                  </Button>
+                </Box>
+              );
+            })}
+        </Box>
+      )}
     </Box>
   );
 };

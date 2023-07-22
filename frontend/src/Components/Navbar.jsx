@@ -28,7 +28,7 @@ const Navbar = () => {
         </Link>
       </Box>
       <Flex justifyContent={"space-around"} width={"50%"} spacing={10}>
-        <Link to="/dealer">
+        <Link to="/getdeal">
           <Button colorScheme="teal" size="md">
             Dealer Section
           </Button>

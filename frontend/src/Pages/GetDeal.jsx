@@ -9,6 +9,7 @@ import {
   Box,
   Button,
   Center,
+  HStack,
   Image,
   Table,
   TableContainer,
@@ -21,12 +22,15 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
 const GetDeal = () => {
   const dispatch = useDispatch();
   const toast = useToast();
 
-  const { myData } = useSelector((store) => store.marketplaceReducer);
+  const { myData, isLoading, isError } = useSelector(
+    (store) => store.marketplaceReducer
+  );
 
   const handleEdit = (id) => {
     // dispatch(editMyDealFun(id,newData))
@@ -49,8 +53,47 @@ const GetDeal = () => {
     dispatch(getMyDealFun());
   }, []);
 
+  if (isLoading === true) {
+    return (
+      <>
+        <Image
+          src="https://i.stack.imgur.com/hzk6C.gif"
+          alt="loading"
+          margin="auto"
+          paddingTop="90px"
+          marginBottom="360px"
+        />
+      </>
+    );
+  }
+  if (isError === true) {
+    return (
+      <>
+        <Image
+          src="https://cdn.dribbble.com/users/774806/screenshots/3823110/something-went-wrong.gif"
+          alt="error"
+          margin="auto"
+          paddingTop="30px"
+        />
+      </>
+    );
+  }
+
   return (
-    <Box style={{ paddingTop: "120px" }}>
+    <Box style={{ paddingTop: "100px" }}>
+      <HStack margin="20px" marginLeft="70%" gap="40px" >
+        <Link to="/adddeal">
+          <Button colorScheme="teal" size="md">
+            Add New Deal
+          </Button>
+        </Link>
+        <Link to="/oem">
+          <Button colorScheme="teal" size="md">
+            OEM Details
+          </Button>
+        </Link>
+      </HStack>
+
       <TableContainer>
         <Table variant="simple" size="sm">
           <Thead>
@@ -70,11 +113,12 @@ const GetDeal = () => {
                   {" "}
                   <Image src={el.imageURL} alt={el.title} width="100px" />
                 </Td>
-                <Td>
-                  <Text marginBottom="5px">
+                <Td padding={"10px"}>
+                  <Text marginBottom="10px">
                     Manufacturer : {el.manufacturer}
                   </Text>
-                  <Text marginBottom="5px">Title : {el.title}</Text>
+                  <Text marginBottom="10px">Title : {el.title}</Text>
+                  <Text marginBottom="10px">Model : {el.model}</Text>
                 </Td>
                 <Td>
                   <Button colorScheme="blue" onClick={() => handleEdit(el._id)}>
