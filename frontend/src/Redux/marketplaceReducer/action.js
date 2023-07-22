@@ -32,6 +32,54 @@ export const getDealFun = () => (dispatch) => {
     })
 
 }
+export const getPriceDealFun = (value) => (dispatch) => {
+    console.log(value)
+
+    dispatch({ type: API_REQUEST })
+
+    return axios.get(`${baseUrl}/price?price=${value}`,).then((res) => {
+        dispatch({ type: API_GET_SUCCESS, payload: res.data })
+    }).catch((err) => {
+        dispatch({ type: API_FAILED })
+    })
+
+}
+export const getMileageDealFun = (value) => (dispatch) => {
+    console.log(value)
+
+    dispatch({ type: API_REQUEST })
+
+    return axios.get(`${baseUrl}/mileage?mileage=${value}`,).then((res) => {
+        dispatch({ type: API_GET_SUCCESS, payload: res.data })
+    }).catch((err) => {
+        dispatch({ type: API_FAILED })
+    })
+
+}
+export const getColorDealFun = (value) => (dispatch) => {
+    console.log(value)
+
+    dispatch({ type: API_REQUEST })
+
+    return axios.get(`${baseUrl}/color?color=${value}`,).then((res) => {
+        dispatch({ type: API_GET_SUCCESS, payload: res.data })
+    }).catch((err) => {
+        dispatch({ type: API_FAILED })
+    })
+
+}
+export const getSearchDealFun = (value) => (dispatch) => {
+    console.log(value)
+
+    dispatch({ type: API_REQUEST })
+
+    return axios.get(`${baseUrl}/search?search=${value}`,).then((res) => {
+        dispatch({ type: API_GET_SUCCESS, payload: res.data })
+    }).catch((err) => {
+        dispatch({ type: API_FAILED })
+    })
+
+}
 
 export const getMyDealFun = () => (dispatch) => {
 
