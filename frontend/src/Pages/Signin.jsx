@@ -16,7 +16,7 @@ import { Link, Navigate } from "react-router-dom";
 
 const Signin = () => {
   const toast = useToast();
-  const {isAuth} = useSelector((store)=>store.authReducer)
+  const { isAuth } = useSelector((store) => store.authReducer);
   const dispatch = useDispatch();
   const [form, setForm] = useState({
     email: "",
@@ -32,11 +32,12 @@ const Signin = () => {
     e.preventDefault();
     // console.log(form);
     dispatch(SigninFun(form)).then((res) => {
+      const dealerName = localStorage.getItem("dealerName");
       const message = localStorage.getItem("signinMsg");
       if (message == "Login Succesfull") {
         toast({
           title: "Login Succesfull.",
-          description: "",
+          description: `Welcome, ${dealerName}`,
           status: "success",
           duration: 2000,
           isClosable: true,
@@ -55,8 +56,8 @@ const Signin = () => {
     });
   };
 
-  if(isAuth){
-    return <Navigate to="/getdeal"/>
+  if (isAuth) {
+    return <Navigate to="/getdeal" />;
   }
   return (
     <Box style={{ width: "100%" }}>

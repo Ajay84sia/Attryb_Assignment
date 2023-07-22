@@ -1,4 +1,11 @@
-import { Box, Button, Flex, Heading } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Tooltip,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +13,7 @@ import { SignoutFun } from "../Redux/authReducer/action";
 
 const Navbar = () => {
   const { isAuth } = useSelector((store) => store.authReducer);
+  const dealerName = localStorage.getItem("dealerName");
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(SignoutFun());
@@ -52,6 +60,12 @@ const Navbar = () => {
               Sign Out
             </Button>
           </Link>
+        )}
+
+        {isAuth && (
+          <Tooltip hasArrow label={dealerName} bg="gray.300" color="black">
+            <Avatar name={dealerName} />
+          </Tooltip>
         )}
       </Flex>
     </Flex>

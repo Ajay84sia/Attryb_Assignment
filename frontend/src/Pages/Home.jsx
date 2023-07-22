@@ -53,23 +53,23 @@ const Home = () => {
     <Box style={{ width: "100%" }}>
       <HStack paddingTop={"120px"} marginBottom={"30px"} paddingLeft={"40px"} paddingRight={"40px"}>
         <Select
-          placeholder="Sort by Price"
           onChange={(e) => handleSortByPrice(e.target.value)}
         >
+          <option value="">Sort by Price</option>
           <option value="asc">Low to High</option>
           <option value="desc">High to Low</option>
         </Select>
         <Select
-          placeholder="Sort by Mileage"
           onChange={(e) => handleSortByMileage(e.target.value)}
         >
+          <option value="">Sort by Mileage</option>
           <option value="asc">Low to High</option>
           <option value="desc">High to Low</option>
         </Select>
         <Select
-          placeholder="Filter by Color"
           onChange={(e) => handleFilterByColor(e.target.value)}
         >
+          <option value="">Filter by Color</option>
           <option value="red">Red</option>
           <option value="silver">Silver</option>
           <option value="blue">Blue</option>
