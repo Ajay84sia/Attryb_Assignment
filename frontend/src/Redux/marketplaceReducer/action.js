@@ -1,5 +1,5 @@
 import axios from "axios"
-import { API_API_DELETE_MY_SUCCESS, API_FAILED, API_GET_MY_SUCCESS, API_GET_SUCCESS, API_POST_SUCCESS, API_REQUEST } from "./actionTypes"
+import { API_DELETE_MY_SUCCESS, API_EDIT_MY_SUCCESS, API_FAILED, API_GET_MY_SUCCESS, API_GET_SUCCESS, API_POST_SUCCESS, API_REQUEST } from "./actionTypes"
 
 
 let baseUrl = "https://smoggy-frog-robe.cyclic.app"
@@ -60,7 +60,7 @@ export const deleteMyDealFun = (id) => (dispatch) => {
             "Authorization": `bearer ${localStorage.getItem("token")}`,
         }
     }).then((res) => {
-        dispatch({ type: API_API_DELETE_MY_SUCCESS })
+        dispatch({ type: API_DELETE_MY_SUCCESS })
     }).catch((err) => {
         dispatch({ type: API_FAILED })
     })
@@ -71,12 +71,12 @@ export const editMyDealFun = (id, newData) => (dispatch) => {
 
     dispatch({ type: API_REQUEST })
 
-    return axios.delete(`${baseUrl}/market/delete/${id}`, newData, {
+    return axios.patch(`${baseUrl}/market/update/${id}`, newData, {
         headers: {
             "Authorization": `bearer ${localStorage.getItem("token")}`,
         }
     }).then((res) => {
-        dispatch({ type: API_API_DELETE_MY_SUCCESS })
+        dispatch({ type: API_EDIT_MY_SUCCESS })
     }).catch((err) => {
         dispatch({ type: API_FAILED })
     })

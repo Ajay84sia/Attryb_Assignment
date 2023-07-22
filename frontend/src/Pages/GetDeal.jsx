@@ -2,13 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteMyDealFun,
-  editMyDealFun,
   getMyDealFun,
 } from "../Redux/marketplaceReducer/action";
 import {
   Box,
   Button,
-  Center,
   HStack,
   Image,
   Table,
@@ -31,10 +29,6 @@ const GetDeal = () => {
   const { myData, isLoading, isError } = useSelector(
     (store) => store.marketplaceReducer
   );
-
-  const handleEdit = (id) => {
-    // dispatch(editMyDealFun(id,newData))
-  };
 
   const handleDelete = (id) => {
     dispatch(deleteMyDealFun(id)).then(() => {
@@ -81,7 +75,7 @@ const GetDeal = () => {
 
   return (
     <Box style={{ paddingTop: "100px" }}>
-      <HStack margin="20px" marginLeft="70%" gap="40px" >
+      <HStack margin="20px" marginLeft="70%" gap="40px">
         <Link to="/adddeal">
           <Button colorScheme="teal" size="md">
             Add New Deal
@@ -121,9 +115,11 @@ const GetDeal = () => {
                   <Text marginBottom="10px">Model : {el.model}</Text>
                 </Td>
                 <Td>
-                  <Button colorScheme="blue" onClick={() => handleEdit(el._id)}>
-                    <EditIcon />
-                  </Button>
+                  <Link to={`/editDeal/${el?._id}`}>
+                    <Button colorScheme="blue">
+                      <EditIcon />
+                    </Button>
+                  </Link>
                 </Td>
                 <Td>
                   <Button
