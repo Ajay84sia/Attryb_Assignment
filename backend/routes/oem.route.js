@@ -16,8 +16,7 @@ oemRouter.get("/", async (req, res) => {
 
 oemRouter.post("/add", async (req, res) => {
     try {
-        const oemData = new OemModel(req.body)
-        await oemData.save()
+         const oemData = await OemModel.insertMany(req.body)
         res.status(200).send({ 'msg': 'New Data has been added' })
     } catch (error) {
         res.status(400).send({ "error": error.message })
