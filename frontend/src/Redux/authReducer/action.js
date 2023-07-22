@@ -23,10 +23,12 @@ export const SigninFun = (formData) => (dispatch) => {
     dispatch({ type: SIGNIN_REQUEST })
 
     return axios.post(`${baseUrl}/dealers/login`, formData).then((res) => {
-        dispatch({ type: SIGNIN_SUCCESS, payload: res.data.token })
-        localStorage.setItem("signinMsg", res.data.msg)
-        localStorage.setItem("token", res.data.token)
-        localStorage.setItem("dealerName", res.data.name)
+        if (res.data.token) {
+            dispatch({ type: SIGNIN_SUCCESS, payload: res.data.token })
+            localStorage.setItem("signinMsg", res.data.msg)
+            localStorage.setItem("token", res.data.token)
+            localStorage.setItem("dealerName", res.data.name)
+        }
     }).catch((err) => {
         dispatch({ type: SIGNIN_FAILED })
     })
