@@ -6,12 +6,14 @@ import {
   HStack,
   Heading,
   Input,
+  useDisclosure,
   useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addDealFun } from "../Redux/marketplaceReducer/action";
 import { Link } from "react-router-dom";
+import OemModal from "./OemModal";
 
 const initialState = {
   title: "",
@@ -28,6 +30,7 @@ const initialState = {
 };
 
 const AddDeal = () => {
+  const { onOpen, onClose, isOpen } = useDisclosure();
   const toast = useToast();
   const dispatch = useDispatch();
   const [dealForm, setDealForm] = useState(initialState);
@@ -68,7 +71,7 @@ const AddDeal = () => {
     });
   };
   return (
-    <Box style={{ width: "100%", paddingBottom: "10px", paddingTop:"80px" }}>
+    <Box style={{ width: "100%", paddingBottom: "10px", paddingTop: "80px" }}>
       <form
         onSubmit={handleFormSubmit}
         style={{
@@ -81,7 +84,18 @@ const AddDeal = () => {
           color: "teal",
         }}
       >
-        <Heading>Add New Deal</Heading>
+        <HStack
+          style={{
+            paddingTop: "10px",
+            margin: "20px",
+            marginLeft: "30%",
+            gap: "100px",
+          }}
+        >
+          <Heading>Add New Deal</Heading>
+
+          <OemModal />
+        </HStack>
 
         <HStack style={{ width: "100%" }}>
           <br />
@@ -214,13 +228,12 @@ const AddDeal = () => {
           </Box>
         </HStack>
       </form>
-
-        <br />
+      <br />
       <Link to="/getdeal">
-          <Button colorScheme="teal" size="md">
-            Go Back
-          </Button>
-        </Link>
+        <Button colorScheme="teal" size="md">
+          Go Back
+        </Button>
+      </Link>
     </Box>
   );
 };

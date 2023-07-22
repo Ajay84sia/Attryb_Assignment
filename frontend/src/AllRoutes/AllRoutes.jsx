@@ -10,6 +10,7 @@ import SingleDeal from "../Pages/SingleDeal";
 import GetDeal from "../Pages/GetDeal";
 import Oem from "../Pages/Oem";
 import EditDeal from "../Pages/EditDeal";
+import OemModal from "../Pages/OemModal";
 
 const AllRoutes = () => {
   return (
