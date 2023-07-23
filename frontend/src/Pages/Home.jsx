@@ -1,14 +1,14 @@
 import {
   Box,
   Button,
+  Center,
   HStack,
-  Heading,
   Image,
   Input,
   Select,
   Text,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getColorDealFun,
@@ -51,26 +51,26 @@ const Home = () => {
 
   return (
     <Box style={{ width: "100%" }}>
-      <HStack paddingTop={"120px"} marginBottom={"30px"} paddingLeft={"40px"} paddingRight={"40px"}>
-        <Select
-          onChange={(e) => handleSortByPrice(e.target.value)}
-        >
+      <HStack
+        paddingTop={"120px"}
+        marginBottom={"30px"}
+        paddingLeft={"40px"}
+        paddingRight={"40px"}
+      >
+        <Select onChange={(e) => handleSortByPrice(e.target.value)}>
           <option value="">Sort by Price</option>
           <option value="asc">Low to High</option>
           <option value="desc">High to Low</option>
         </Select>
-        <Select
-          onChange={(e) => handleSortByMileage(e.target.value)}
-        >
+        <Select onChange={(e) => handleSortByMileage(e.target.value)}>
           <option value="">Sort by Mileage</option>
           <option value="asc">Low to High</option>
           <option value="desc">High to Low</option>
         </Select>
-        <Select
-          onChange={(e) => handleFilterByColor(e.target.value)}
-        >
+        <Select onChange={(e) => handleFilterByColor(e.target.value)}>
           <option value="">Filter by Color</option>
           <option value="red">Red</option>
+          <option value="black">Black</option>
           <option value="silver">Silver</option>
           <option value="blue">Blue</option>
           <option value="white">White</option>
@@ -82,7 +82,9 @@ const Home = () => {
           placeholder="Search Car"
         />
       </HStack>
-      <Button marginBottom={"30px"} onClick={handleReset}>Reset All Filters</Button>
+      <Button marginBottom={"30px"} onClick={handleReset}>
+        Reset All Filters
+      </Button>
 
       {isLoading === true ? (
         <>
@@ -114,7 +116,6 @@ const Home = () => {
             paddingBottom: "50px",
           }}
         >
-          {" "}
           {marketData &&
             marketData.map((el) => {
               return (
@@ -154,6 +155,16 @@ const Home = () => {
               );
             })}
         </Box>
+      )}
+
+      {marketData.length === 0 && (
+        <Center>
+          <Image
+            src="https://www.badcreditcardealers.com/images/no-results-found.png"
+            alt="result_not_found"
+            width="45%"
+          />
+        </Center>
       )}
     </Box>
   );
