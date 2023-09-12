@@ -1,4 +1,4 @@
-Attryb Buy Car Marketplace Assignment
+BUYC - Old & New Car Marketplace
 
 ## 🏷️ What is BUYC?
 
