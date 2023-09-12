@@ -1,4 +1,4 @@
-BUYC - Old & New Car Marketplace
+BUYC - Second hand Car Marketplace
 
 ## 🏷️ What is BUYC?
 
