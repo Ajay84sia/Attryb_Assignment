@@ -29,7 +29,8 @@ This Application lets you register and Login and post, list, update, and delete 
 
 # 🏷️ Home Page
 
-![image](https://github.com/Ajay84sia/Attryb_Assignment/assets/98752820/51191f8c-f089-4511-9c72-8609487406ce)
+<!-- ![image](https://github.com/Ajay84sia/Attryb_Assignment/assets/98752820/51191f8c-f089-4511-9c72-8609487406ce) -->
+![image](https://github.com/Ajay84sia/BUYC/assets/98752820/d7fa1073-d0c9-4beb-b6fd-4353296783f7)
 
 # 🏷️ SignUp Page
 
